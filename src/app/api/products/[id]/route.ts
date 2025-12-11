@@ -8,20 +8,25 @@ export async function GET(
   try {
     const { id } = params;
 
-    // TODO: replace this example with your real fetch/db logic.
-    // Example placeholder:
-    // const product = await fetchProductFromDb(id);
+    // TODO: replace this stub with your actual DB/API logic.
+    // Example:
+    // const product = await getProductById(id);
     const product = {
       id,
       name: `Sample product ${id}`,
       price: 0,
-      message: 'Replace this stub with real product fetching logic',
+      message: 'Replace this stub with your real product fetch logic'
     };
 
-    // Return JSON with NextResponse
+    if (!product) {
+      return new Response(JSON.stringify({ error: 'Not Found' }), {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     return NextResponse.json(product);
   } catch (err) {
-    // Safe error response for production builds
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
