@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force explicit relative .next directory to avoid Vercel path duplication
+  // Keep default .next directory (explicit is fine)
   distDir: '.next',
 
   reactStrictMode: true,
-  swcMinify: true,
+  // NOTE: do not include swcMinify (Netlify runtime complains)
+  // swcMinify: true, // <-- removed
 };
 
 module.exports = nextConfig;
