@@ -3,12 +3,7 @@ import { NextResponse } from 'next/server';
 
 /**
  * Correct Next.js App Router GET handler signature:
- *   GET(request: Request, context: { params: { id: string } })
- *
- * Important:
- * - First parameter must be Request.
- * - Second parameter must be an object with `params` containing route params.
- * - Returning NextResponse.json(...) produces a proper JSON response.
+ * GET(request: Request, context: { params: { id: string } })
  */
 export async function GET(
   request: Request,
@@ -17,13 +12,13 @@ export async function GET(
   try {
     const { id } = params;
 
-    // TODO: replace this stub with your real fetch/db logic:
-    // e.g. const product = await getProductById(id);
+    // TODO: replace stub logic below with your real fetch/db call.
+    // Example: const product = await getProductById(id);
     const product = {
       id,
       name: `Sample product ${id}`,
       price: 0,
-      note: 'Replace this stub with actual DB/API logic'
+      note: 'Replace this stub with your DB/API logic'
     };
 
     if (!product) {
@@ -35,7 +30,6 @@ export async function GET(
 
     return NextResponse.json(product);
   } catch (err) {
-    // Log error server-side if you want (avoid leaking details)
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
