@@ -3,10 +3,11 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev ",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
+  "dev": "next dev",
+  "build": "next build",
+  "postbuild": "mkdir -p vercel/path0/.next && cp -a .next/. vercel/path0/.next/ || true",
+  "start": "next start",
+  "lint": "next lint"
     },
     "dependencies": {
         "@babel/parser": "^7.28.5",
