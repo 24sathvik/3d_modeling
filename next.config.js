@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Keep default .next directory (explicit is fine)
+  // explicit relative distDir avoids Vercel/Netlify path bugs
   distDir: '.next',
 
   reactStrictMode: true,
-  // NOTE: do not include swcMinify (Netlify runtime complains)
-  // swcMinify: true, // <-- removed
+
+  // IMPORTANT: prevent Next.js from running ESLint during `next build`
+  // This avoids the circular-structure ESLint crash during CI builds.
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
 
 module.exports = nextConfig;
